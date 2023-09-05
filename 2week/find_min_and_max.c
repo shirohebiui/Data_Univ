@@ -39,7 +39,6 @@ int main() {
     printf("\n");
 
     int result[2];
-    find_max_min(result);
     printf("min : %d\n", result[0]);
     printf("max : %d\n", result[1]);
 
