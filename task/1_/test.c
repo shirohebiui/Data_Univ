@@ -24,11 +24,12 @@ student_info *swap(student_info *std_struct, student_info *swap_struct) {
     tmp = *std_struct;
     *std_struct = *swap_struct;
     *swap_struct = tmp;
+    return 0;
 }
 
 void print_all() {
     for(int i=0; i<N_STUDENTS; i++) {
-        printf("%d : %s %d %.2f\n", i, students[i].name, students[i].height, students[i].weight);
+        printf("[%d] %s: %d %f\n", i, students[i].name, students[i].height, students[i].weight);
     }
     printf("\n");
 }
@@ -38,23 +39,65 @@ void sort_name() {
         bool FLAG = 0;
         int change = std;
         for(int cmp=std+1; cmp<N_STUDENTS; cmp++) {
-            if(strcmp(students[change].name, students[cmp].name) > 0) {
+            if(strcmp(students[change].name, students[cmp].name) > 0) { 
                 if(!FLAG) FLAG = 1;
-                printf("%d %d\n", change, cmp);
                 change = cmp;
             }
         }
         if(FLAG) {
             swap(&students[std], &students[change]);
-            print_all();
+        }
+    }
+}
+
+void sort_weight() {
+    for(int std = 0; std < N_STUDENTS - 1 ; std++) {
+        bool FLAG = 0;
+        int change = std;
+        for(int cmp=std+1; cmp<N_STUDENTS; cmp++) {
+            if(students[change].weight - students[cmp].weight > 0) { 
+                if(!FLAG) FLAG = 1;
+                change = cmp;
+            }
+        }
+        if(FLAG) {
+            swap(&students[std], &students[change]);
+        }
+    }
+}
+
+void sort_height() {
+    for(int std = 0; std < N_STUDENTS - 1 ; std++) {
+        bool FLAG = 0;
+        int change = std;
+        for(int cmp=std+1; cmp<N_STUDENTS; cmp++) {
+            if(students[change].height - students[cmp].height > 0) { 
+                if(!FLAG) FLAG = 1;
+                change = cmp;
+            }
+        }
+        if(FLAG) {
+            swap(&students[std], &students[change]);
         }
     }
 }
 
 
-int main(void) {
+int main() {
+    printf("init\n");
     print_all();
+
+    printf("\nsort in order height\n");
+    sort_height();
+    print_all();
+
+    printf("\nsort in order weight\n");
+    sort_weight();
+    print_all();
+
+    printf("\nsort in order name\n");
     sort_name();
     print_all();
+
     return 0;
 }
