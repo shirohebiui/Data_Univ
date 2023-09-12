@@ -84,18 +84,26 @@ void sort_height() {
 
 
 int main() {
-    printf("init\n");
+    printf("--------------------------------\n");
+    printf("[초기 학생 정보]\n");
+    printf("--------------------------------\n");
     print_all();
 
-    printf("\nsort in order height\n");
+    printf("--------------------------------\n");
+    printf("[키 정렬 후 학생 정보]\n");
+    printf("--------------------------------\n");
     sort_height();
     print_all();
 
-    printf("\nsort in order weight\n");
+    printf("--------------------------------\n");
+    printf("[몸무게 정렬 후 학생정보]\n");
+    printf("--------------------------------\n");
     sort_weight();
     print_all();
 
-    printf("\nsort in order name\n");
+    printf("--------------------------------\n");
+    printf("[이름 정렬 후 학생정보]\n");
+    printf("--------------------------------\n");
     sort_name();
     print_all();
 
