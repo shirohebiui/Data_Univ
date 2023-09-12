@@ -26,38 +26,31 @@ student_info *swap(student_info *std_struct, student_info *swap_struct) {
     *swap_struct = tmp;
 }
 
-int cmp_str(int std_str, int cmp_str) {
-    int change = std_str;
-    for(int i=0; i<NAME_SPACE; i++) {
-        if(students[std_str].name[i] > students[cmp_str].name[i]) {
-            change = cmp_str;
-            break;
-        }
+void print_all() {
+    for(int i=0; i<N_STUDENTS; i++) {
+        printf("%d : %s %d %.2f\n", i, students[i].name, students[i].height, students[i].weight);
     }
-    return change;
+    printf("\n");
 }
 
 void sort_name() {
-    int std = 0;
-    for(int std = 0; std < N_STUDENTS ; std++) {
+    for(int std = 0; std < N_STUDENTS - 1 ; std++) {
+        bool FLAG = 0;
         int change = std;
-        for(int cmp=std; cmp<N_STUDENTS; cmp++) {
-            if(strcmp(students[std].name, students[cmp].name) > 0) {
-                printf("change %s %s\n", students[std].name, students[cmp].name);
-                change = cmp_str(change, cmp_str(std, cmp));
+        for(int cmp=std+1; cmp<N_STUDENTS; cmp++) {
+            if(strcmp(students[change].name, students[cmp].name) > 0) {
+                if(!FLAG) FLAG = 1;
+                printf("%d %d\n", change, cmp);
+                change = cmp;
             }
         }
-        if(change != std) {
+        if(FLAG) {
             swap(&students[std], &students[change]);
+            print_all();
         }
     }
 }
 
-void print_all() {
-    for(int i=0; i<N_STUDENTS; i++) {
-        printf("%d : %s %d %f\n", i, students[i].name, students[i].height, students[i].weight);
-    }
-}
 
 int main(void) {
     print_all();
