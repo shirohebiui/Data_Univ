@@ -19,12 +19,11 @@ student_info students[N_STUDENTS] = {
     {"유관순", 163, 58.4}
 };
 
-student_info *swap(student_info *std_struct, student_info *swap_struct) {
+void swap(student_info *std_struct, student_info *swap_struct) {
     struct student_info tmp;
     tmp = *std_struct;
     *std_struct = *swap_struct;
     *swap_struct = tmp;
-    return 0;
 }
 
 void print_all() {
