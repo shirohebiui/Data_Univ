@@ -197,6 +197,7 @@ int cal(char stack[]) {
             push(&s, atoi(&stack[i])); //문자를 숫자로 바꿔 push
             i += digit(atoi(&stack[i])); //자릿수만큼 문자열포인터 이동
             break;
+        
         }
     }
     return pop(&s);
