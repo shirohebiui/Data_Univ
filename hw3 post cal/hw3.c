@@ -206,7 +206,7 @@ int main(void)
 {
     char text[MAX_STACK_SIZE];
 	char stack[MAX_STACK_SIZE];
-	printf("[ itsys:hw 508 ] run\n");
+	printf("[ itsys:hw3 508 ] run\n");
 	while(1) {
 		FLAG = 0; //괄호검사 FLAG 초기화
 		memset(text, '\0', MAX_STACK_SIZE); //공간 초기화
@@ -216,7 +216,7 @@ int main(void)
 		printf("수식입력 (q:quit): ");
 		scanf("%[^\n]s", text); //공백포함 문자열 입력받음
 		if(!strcmp(text,"q")) { //q입력시 프로세스 종료
-			printf("[ itsys:hw 509 ]\n");
+			printf("[ itsys:hw3 509 ]\n");
 			return 1;
 		}
 		infix_to_postfix(text, stack); //text을 후위표기식으로 변환 -> stack에 저장
@@ -229,7 +229,7 @@ int main(void)
 		printf("\n\t\t   ");
 		printf("%s = %d\n\n", text, cal(stack)); //후위표기식의 계산결과를 출력
 	}
-	printf("[ itsys:hw 508 ] run\n");
+	fprintf(stderr, "예기치 못한 종료\n");
 	
     return 0;
 }
